@@ -1,2 +1,2 @@
 export * from './box';
-//export * from './card-item';
+export * from './part-item/index-partItem';

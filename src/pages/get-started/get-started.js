@@ -1,9 +1,11 @@
-import React from 'react'
-import { StyleSheet, Text, View , ImageBackground} from 'react-native'
-import { BackgroudGetStarted, Illogo } from '../../assets/index-assets'
-import {Button, Gap} from '../../components/index-components'
+import React from 'react';
+import { StyleSheet, Text, View , ImageBackground} from 'react-native';
+import { BackgroudGetStarted, Illogo } from '../../assets/index-assets';
+import {Button, Gap} from '../../components/index-components';
 
-const GetStarted = () => {
+
+
+const GetStarted = ({navigation}) => {
     return (
         <ImageBackground source={BackgroudGetStarted} style={styles.page}>
             <View>
@@ -11,16 +13,17 @@ const GetStarted = () => {
                 <Text style={styles.title}>Konsultasi dengan sang ahli menjadi lebih mudah & flexibel</Text>
             </View>
             <View>
-                <Button title='Get Started' onPress={() => alert('Hello')}/>
+                <Button 
+                    title="Get Started" 
+                    onPress={() => navigation.navigate('RegisterScreen')}/>
                 <Gap height={16}/>
-                <Button type='secondary' title ='Sign In'/>
+                <Button type='secondary' title ='Sign In' onPress={() => navigation.replace('LoginScreen') }/>
             </View>
-            
         </ImageBackground>
     )
 }
 
-export default GetStarted
+export default GetStarted;
 
 const styles = StyleSheet.create({
     page: {

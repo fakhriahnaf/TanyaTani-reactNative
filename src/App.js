@@ -13,7 +13,7 @@ import Router from './router/index-router';
 const App = () => {
   return (
     <NavigationContainer>
-      <GetStarted/>
+      <Router/>
     </NavigationContainer>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Illogo } from '../../assets/index-assets';
 
@@ -7,7 +7,7 @@ const SplashScreen = ({navigation}) => {
        setTimeout(() => {
         navigation.navigate('GetStarted')
        }, 3000)
-    }, [navigation])
+    }, [navigation]);
     return (
         <View style={styles.body}>
           <Illogo/>
