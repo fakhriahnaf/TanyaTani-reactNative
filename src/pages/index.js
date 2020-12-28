@@ -6,6 +6,7 @@ import UploadPhoto from './upload-photo/uploadphoto';
 import Mentor from './Mentor/mentor';
 import Messages from './Messages/messages';
 import TaniCenter from './tani-center/tani-center';
+import ChooseMentor from './ChooseMentor/choose-mentor';
 
 export {
     SplashScreen,
@@ -16,4 +17,5 @@ export {
     TaniCenter,
     Mentor,
     Messages,
+    ChooseMentor,
 };

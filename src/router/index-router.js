@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator} from '@react-navigation/stack';
-import { GetStarted, LoginScreen,  Mentor,  Messages,  RegisterScreen, SplashScreen, TaniCenter, UploadPhoto } from '../pages';
+import { ChooseMentor, GetStarted, LoginScreen,  Mentor,  Messages,  RegisterScreen, SplashScreen, TaniCenter, UploadPhoto } from '../pages';
 import { createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components/index-components';
 
@@ -63,6 +63,11 @@ const Router = () => {
             <Stack.Screen 
                 name='Mentor'
                 component={Mentor}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen 
+                name='ChooseMentor'
+                component={ChooseMentor}
                 options={{headerShown: false}}
             />
         </Stack.Navigator>

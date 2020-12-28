@@ -7,6 +7,7 @@ const Button = ({type, title, onPress,icon}) => {
     if (type === 'icon-only') {
         return <IconOnly icon={icon} onPress={onPress}/>
     }
+    
     return (
         <TouchableOpacity style={styles.container(type)} onPress={onPress}>
             <Text style={styles.textButton(type)}>{title}</Text>

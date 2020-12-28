@@ -1,16 +1,17 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import {IconBackDark} from '../../../assets/index-assets'
+import { colors } from '../../../utils/color'
 import { Button, Gap } from '../../box'
 
-const Header = ({onPress, title}) => {
+const Header = ({onPress, title, type}) => {
     return (
-        <View style={styles.container}>
+        <View style={styles.container(type)}>
             <View style={{paddingTop: 25}}>
                 {/* <IconBackDark/> */}
-                <Button type='icon-only' icon='back-dark' onPress={onPress}/>
+                <Button type='icon-only' icon={type === 'dark' ? 'back-light' : 'back-dark'} onPress={onPress}/>
             </View>
-            <Text style={styles.text}>{title}</Text>
+            <Text style={styles.text(type)}>{title}</Text>
             <Gap width={29}/>
         </View>
     )
@@ -19,20 +20,22 @@ const Header = ({onPress, title}) => {
 export default Header
 
 const styles = StyleSheet.create({
-    container :{
+    container : type => ({
         paddingHorizontal : 20,
         paddingTop: 30,
-        paddingVertical : 25,
-        backgroundColor: 'white',
+        paddingVertical : type === 'dark' ? 40 :25,
+        backgroundColor: type === 'dark' ? colors.secondary : colors.white,
         flexDirection: 'row',
-        alignItems: 'center'
-    },
-    text :{
+        alignItems: 'center',  
+        borderBottomLeftRadius : type === 'dark' ? 20 : 0,
+        borderBottomRightRadius : type === 'dark' ? 20 : 0,
+    }),
+    text : type => ({
         textAlign: 'center',
-        paddingTop : 22,
+        paddingTop : type === 'dark' ? 38: 22,
         flex: 1,
         fontSize: 20,
         fontFamily: 'Nunito-SemiBold',
-        color: 'black'
-    }
+        color: type === 'dark' ? colors.white : colors.text.primary,
+    }),
 })

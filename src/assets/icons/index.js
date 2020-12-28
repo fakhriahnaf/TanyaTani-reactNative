@@ -8,7 +8,9 @@ import IconTaniCenter from './ic-TaniCenter.svg';
 import IconFarmerActive from './ic-farmers-active.svg';
 import IconTaniCenterActive from './ic-TaniCenter-active.svg';
 import IconMessagesActive from './ic-messages-active.svg';
-
+import IconStar from './ic-star.svg';
+import IconBackLight from './ic-back-light.svg';
+import IconNext from './ic-next.svg';
 export {
     IconBackDark,
     IconBackWhite,
@@ -20,4 +22,7 @@ export {
     IconFarmerActive,
     IconTaniCenterActive,
     IconMessagesActive,
+    IconStar,
+    IconBackLight,
+    IconNext,
 }

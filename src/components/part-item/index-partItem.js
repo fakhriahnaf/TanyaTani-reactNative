@@ -5,7 +5,8 @@ import HomeProfile from './HomeProfile/home-profile';
 import MentorCategory from './MentorCategory/mentor-category';
 import RatedMentor from './RatedMentor/rated-mentor';
 import NewsItem from './NewsItem/news-item';
-
+import ListTaniCenter from './ListTaniCenter/list-tani-center';
+import ListMentor from'./ListMentor/list-mentor';
 export {
     Header,
     HeaderLogin,
@@ -13,5 +14,8 @@ export {
     HomeProfile,
     MentorCategory,
     RatedMentor,
+    ListMentor,
     NewsItem,
+    ListTaniCenter,
+
 };
