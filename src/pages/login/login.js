@@ -23,7 +23,7 @@ const LoginScreen = ({navigation}) => {
                 <Gap height={100}/>
                 <Button title="Sign In" onPress={() => navigation.replace('MainApp')} />
                 <Gap height={30}/>
-                <Link size={20} title="dont have account? SignUp!" align='center' />
+                <Link size={20} title="dont have account? SignUp!" align='center' onPress={() => navigation.navigate('RegisterScreen')}/>
                 
                 <Gap height={170}/>
             </View>

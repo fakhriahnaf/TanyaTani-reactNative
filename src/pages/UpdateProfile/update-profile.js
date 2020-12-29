@@ -10,7 +10,7 @@ const UpdateProfile = ({navigation}) => {
             <Header title='Update Profile' onPress={() => navigation.goBack()} />
             <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.content}>
-                <Profile name='Tiara' profession='mahasiswa cantik' />
+                <Profile name='Tiara' profession='mahasiswa cantik' isRemove={true}/>
                 <Gap height={20}/>
                 <Input label='Full Name' />
                 <Input label='Pekerjaan' />

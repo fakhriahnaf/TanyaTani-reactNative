@@ -4,12 +4,12 @@ import {colors, fonts} from '../../../utils/index-utils';
 import {IconRemovePhoto, UserDummy} from '../../../assets/index-assets'
 
 
-const Profile = ({name, profession}) => {
+const Profile = ({name, profession, isRemove}) => {
     return (
         <View style={styles.container}>
             <View style={styles.borderPicture}>
                 <Image source={UserDummy} style={styles.avatar}/>
-                <IconRemovePhoto style={styles.removePhoto}/>
+                {isRemove && <IconRemovePhoto style={styles.removePhoto}/>}
             </View>
             <Text style={styles.name}>{name}</Text>
             <Text style={styles.profession}>{profession}</Text>

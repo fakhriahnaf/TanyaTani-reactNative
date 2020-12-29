@@ -7,7 +7,7 @@ import List from '../../components/part-item/List/list'
 import { colors } from '../../utils/color'
 import { fonts } from '../../utils/font'
 
-const Messages = () => {
+const Messages = ({navigation}) => {
     const [mentors] = useState([
         {
             id:1,
@@ -40,6 +40,7 @@ const Messages = () => {
                             pict ={mentors.pict}
                             name={mentors.name}
                             desc={mentors.message}
+                            onPress={()=> navigation.navigate('Chatting')}
                         />);
                     })}
                 </ScrollView>

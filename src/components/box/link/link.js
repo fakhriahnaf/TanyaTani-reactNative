@@ -1,11 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
-const Link = ({size, title, align}) => {
+const Link = ({size, title, align, onPress}) => {
     return (
-        <View>
+        <TouchableOpacity onPress={onPress}>
             <Text style={styles.text(size, align)}>{title}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 
