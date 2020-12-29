@@ -11,6 +11,9 @@ import IconMessagesActive from './ic-messages-active.svg';
 import IconStar from './ic-star.svg';
 import IconBackLight from './ic-back-light.svg';
 import IconNext from './ic-next.svg';
+import IconSendLight from './ic-send-light.svg';
+import IconSendDark from './ic-send-dark.svg';
+
 export {
     IconBackDark,
     IconBackWhite,
@@ -25,4 +28,6 @@ export {
     IconStar,
     IconBackLight,
     IconNext,
+    IconSendDark,
+    IconSendLight,
 }

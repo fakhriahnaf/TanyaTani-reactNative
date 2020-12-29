@@ -1,19 +1,19 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { color } from 'react-native-reanimated';
 import { UserDummy } from '../../../assets/index-assets';
 import { colors } from '../../../utils/color';
 import { fonts } from '../../../utils/font';
 
-const HomeProfile = () => {
+const HomeProfile = ({onPress}) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <Image source={UserDummy} style={styles.avatar}/>
             <View>
                 <Text style={styles.name}>Tiara Adellyn</Text>
                 <Text style={styles.profession}>Petani Muda</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

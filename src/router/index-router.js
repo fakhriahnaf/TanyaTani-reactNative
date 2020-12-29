@@ -1,6 +1,18 @@
 import React from 'react';
 import { createStackNavigator} from '@react-navigation/stack';
-import { ChooseMentor, GetStarted, LoginScreen,  Mentor,  Messages,  RegisterScreen, SplashScreen, TaniCenter, UploadPhoto } from '../pages';
+import { 
+    Chatting, 
+    ChooseMentor, 
+    GetStarted, 
+    LoginScreen,  
+    Mentor,  
+    Messages,  
+    RegisterScreen, 
+    SplashScreen, 
+    TaniCenter, 
+    UploadPhoto,
+    UserProfile, 
+} from '../pages';
 import { createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../components/index-components';
 
@@ -70,6 +82,17 @@ const Router = () => {
                 component={ChooseMentor}
                 options={{headerShown: false}}
             />
+            <Stack.Screen 
+                name='Chatting'
+                component={Chatting}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen 
+                name='UserProfile'
+                component={UserProfile}
+                options={{headerShown: false}}
+            />
+            
         </Stack.Navigator>
     );
 };

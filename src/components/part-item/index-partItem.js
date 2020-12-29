@@ -6,15 +6,24 @@ import MentorCategory from './MentorCategory/mentor-category';
 import RatedMentor from './RatedMentor/rated-mentor';
 import NewsItem from './NewsItem/news-item';
 import ListTaniCenter from './ListTaniCenter/list-tani-center';
-import ListMentor from'./ListMentor/list-mentor';
+import List from'./List/list';
+import ChatItem from './ChatPart/chat-item';
+import ChatInput from'./ChatInput/chat-input';
+import DarkProfile from './header/dark-profile';
+import Profile from './Profile/profile';
+
 export {
+    Profile,
+    DarkProfile,
     Header,
+    ChatItem,
+    ChatInput,
     HeaderLogin,
     BottomNavigator,
     HomeProfile,
     MentorCategory,
     RatedMentor,
-    ListMentor,
+    List,
     NewsItem,
     ListTaniCenter,
 

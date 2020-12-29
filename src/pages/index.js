@@ -7,6 +7,8 @@ import Mentor from './Mentor/mentor';
 import Messages from './Messages/messages';
 import TaniCenter from './tani-center/tani-center';
 import ChooseMentor from './ChooseMentor/choose-mentor';
+import Chatting from './Chating/chating';
+import UserProfile from './UserProfile/user-profile';
 
 export {
     SplashScreen,
@@ -18,4 +20,6 @@ export {
     Mentor,
     Messages,
     ChooseMentor,
+    Chatting,
+    UserProfile,
 };

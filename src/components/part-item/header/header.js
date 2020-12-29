@@ -3,8 +3,12 @@ import { StyleSheet, Text, View } from 'react-native'
 import {IconBackDark} from '../../../assets/index-assets'
 import { colors } from '../../../utils/color'
 import { Button, Gap } from '../../box'
+import { DarkProfile } from '../index-partItem'
 
 const Header = ({onPress, title, type}) => {
+    if (type === 'dark-profile') {
+        return <DarkProfile onPress={onPress}/>
+    }
     return (
         <View style={styles.container(type)}>
             <View style={{paddingTop: 25}}>

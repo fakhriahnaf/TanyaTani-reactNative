@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { DummyTopRated1, DummyTopRated2, DummyTopRated3 } from '../../assets/index-assets'
 import { Gap } from '../../components/box'
-import ListMentor from '../../components/part-item/ListMentor/list-mentor'
+import List from '../../components/part-item/List/list'
 import { colors } from '../../utils/color'
 import { fonts } from '../../utils/font'
 
@@ -35,7 +35,7 @@ const Messages = () => {
                 <Gap height={10}/>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {mentors.map(mentors => {
-                        return ( <ListMentor
+                        return ( <List
                             key={mentors.id}
                             pict ={mentors.pict}
                             name={mentors.name}

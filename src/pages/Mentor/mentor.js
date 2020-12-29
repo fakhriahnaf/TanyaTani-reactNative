@@ -11,7 +11,7 @@ const Mentor = ({navigation}) => {
         <View style={styles.page}>
             <View style={styles.content}>
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <HomeProfile />
+                    <HomeProfile onPress={() => navigation.navigate('UserProfile')}/>
                     <Text style={styles.wellcome}>Mau konsultasi apa hari ini?</Text>
                     <View style={styles.wrappedScroll}>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false}>

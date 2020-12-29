@@ -1,24 +1,24 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { DummyTopRated1 } from '../../../assets/dummy/index-dummy'
 import { IconNext } from '../../../assets/icons'
 import { colors } from '../../../utils/color'
 import { fonts } from '../../../utils/font'
 
-const ListMentor = ({pict, name, desc, type}) => {
+const List = ({pict, name, desc, type, onPress}) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <Image source={pict} style={styles.avatar}/>
             <View style={styles.content}>
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.text}>{desc}</Text>
             </View>
             {type === 'next' && <IconNext/>}
-        </View>
+        </TouchableOpacity>
     )
 }
 
-export default ListMentor;
+export default List;
 
 const styles = StyleSheet.create({
     container: {
