@@ -9,6 +9,9 @@ import TaniCenter from './tani-center/tani-center';
 import ChooseMentor from './ChooseMentor/choose-mentor';
 import Chatting from './Chating/chating';
 import UserProfile from './UserProfile/user-profile';
+import MentorProfile from './MentorProfile/mentor-profile';
+import UpdateProfile from './UpdateProfile/update-profile';
+
 
 export {
     SplashScreen,
@@ -22,4 +25,6 @@ export {
     ChooseMentor,
     Chatting,
     UserProfile,
+    MentorProfile,
+    UpdateProfile,
 };

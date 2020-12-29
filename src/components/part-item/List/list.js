@@ -1,14 +1,29 @@
 import React from 'react'
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { DummyTopRated1 } from '../../../assets/dummy/index-dummy'
-import { IconNext } from '../../../assets/icons'
+import { IconEditProfile, IconHelp, IconLanguage, IconNext, IconRate } from '../../../assets/icons'
 import { colors } from '../../../utils/color'
 import { fonts } from '../../../utils/font'
 
-const List = ({pict, name, desc, type, onPress}) => {
+const List = ({pict, name, desc, type, onPress, icon}) => {
+    const Icon = () => {
+        if (icon === 'edit-profile') {
+            return <IconEditProfile/>
+        }
+        if (icon === 'language') {
+            return <IconLanguage/>
+        }
+        if (icon === 'rate') {
+            return <IconRate/>
+        }
+        if (icon === 'help') {
+            return <IconHelp/>
+        }
+        return <IconEditProfile/>;
+    }
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
-            <Image source={pict} style={styles.avatar}/>
+            { icon ? <Icon/> : <Image source={pict} style={styles.avatar}/>}
             <View style={styles.content}>
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.text}>{desc}</Text>
@@ -31,6 +46,7 @@ const styles = StyleSheet.create({
     },
     content :{
         flex: 1,
+        marginLeft: 12,
     },  
 
     avatar : {

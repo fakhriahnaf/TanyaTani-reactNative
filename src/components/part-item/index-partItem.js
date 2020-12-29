@@ -11,6 +11,7 @@ import ChatItem from './ChatPart/chat-item';
 import ChatInput from'./ChatInput/chat-input';
 import DarkProfile from './header/dark-profile';
 import Profile from './Profile/profile';
+import ProfileItem from './ProfileItem/profile-item';
 
 export {
     Profile,
@@ -26,5 +27,6 @@ export {
     List,
     NewsItem,
     ListTaniCenter,
+    ProfileItem,
 
 };

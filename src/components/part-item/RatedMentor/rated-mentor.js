@@ -1,16 +1,16 @@
 import React from 'react'
-import { StyleSheet, Text, View , Image} from 'react-native'
+import { StyleSheet, Text, View , Image, TouchableOpacity} from 'react-native'
 import { DummyTopRated1, IconStar } from '../../../assets/index-assets';
 import { colors } from '../../../utils/color';
 import { fonts } from '../../../utils/font';
 
-const RatedMentor = () => {
+const RatedMentor = ({onPress, name, desc, avatar}) => {
     return (
-        <View style={styles.container}>
-            <Image source={DummyTopRated1} style={styles.avatar}/>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
+            <Image source={avatar} style={styles.avatar}/>
             <View style={styles.profile}>
-                <Text style={styles.name}>Alex rachmanto</Text>
-                <Text style={styles.category}>Mentor Petani Kebun</Text>
+                <Text style={styles.name}>{name}</Text>
+                <Text style={styles.category}>{desc}</Text>
             </View>
             <View style={styles.rate}>
                 <IconStar/>
@@ -19,7 +19,7 @@ const RatedMentor = () => {
                 <IconStar/>
                 <IconStar/>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

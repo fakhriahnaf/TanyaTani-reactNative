@@ -6,10 +6,12 @@ import {
     GetStarted, 
     LoginScreen,  
     Mentor,  
+    MentorProfile,  
     Messages,  
     RegisterScreen, 
     SplashScreen, 
     TaniCenter, 
+    UpdateProfile, 
     UploadPhoto,
     UserProfile, 
 } from '../pages';
@@ -92,6 +94,17 @@ const Router = () => {
                 component={UserProfile}
                 options={{headerShown: false}}
             />
+            <Stack.Screen 
+                name='MentorProfile'
+                component={MentorProfile}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen 
+                name='UpdateProfile'
+                component={UpdateProfile}
+                options={{headerShown: false}}
+            />
+
             
         </Stack.Navigator>
     );
