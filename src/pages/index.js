@@ -11,6 +11,7 @@ import Chatting from './Chating/chating';
 import UserProfile from './UserProfile/user-profile';
 import MentorProfile from './MentorProfile/mentor-profile';
 import UpdateProfile from './UpdateProfile/update-profile';
+import TestPage from './tespage/tespage'
 
 
 export {
@@ -27,4 +28,5 @@ export {
     UserProfile,
     MentorProfile,
     UpdateProfile,
+    TestPage,
 };

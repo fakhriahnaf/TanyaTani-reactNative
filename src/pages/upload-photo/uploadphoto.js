@@ -1,28 +1,82 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { getFontScale } from 'react-native/Libraries/Utilities/PixelRatio'
-import { UserPhotoNull, IconAddPhoto } from '../../assets/index-assets'
+import { UserPhotoNull, IconAddPhoto, IconRemovePhoto, UserDummy } from '../../assets/index-assets'
 import { Button, Gap, Header, Link } from '../../components/index-components'
 import { colors } from '../../utils/color'
-import { fonts } from '../../utils/font'
+import { fonts } from '../../utils/font';
+//import launchImageLibrary from  '../../../node_modules/react-native-image-picker/lib/typescript/index';
+import { showMessage } from 'react-native-flash-message'
+import { storeData } from '../../utils/index-utils';
+import Fire from '../../config/firebase'
+import {
+    launchImageLibrary
+  } from 'react-native-image-picker';
 
 
-const UploadPhoto = ({ navigation }) => {
+
+const UploadPhoto = ({ navigation, route }) => {
+    const {fullname, profession, uid} = route.params;
+    const [photoForDB, setPhotoForDB] = useState('');
+    const [hasPhoto, setHasPhoto] = useState(false);
+    const [photo, setPhoto] = useState(UserPhotoNull);
+
+    const getImage = () => {
+        let options = {
+            maxWidth: 200,
+            maxHeight: 200,
+            quality: 1,
+          };
+        launchImageLibrary(options, (response) => {
+                //console.log('response :', response);
+                if(response.didCancel || response.error){
+                    showMessage({
+                        message: 'pilih foto dulu',
+                        type: 'default',
+                        backgroundColor: colors.error,
+                        color: colors.white,
+                    });
+                } else {
+                    console.log('response getImage: ', response);
+                    const source = {uri: response.uri};
+
+                    setPhotoForDB(`data:${response.type};base64, ${response.data}`);
+                    setPhoto(source);
+                    setHasPhoto(true);
+                }
+                //console.log('base64 -> ', response.base64);
+            });
+    };
+    
+
+    const uploadAndContinue = () => {
+        Fire.database()
+          .ref('users/' + uid + '/')
+          .update({photo: photoForDB});
+    
+        const data = route.params;
+        data.photo = photoForDB;
+        
+        storeData('user', data);
+        navigation.replace('MainApp');
+      };
     return (
         <View style={styles.page}>
             <Header title='Upload Photo' onPress={() => navigation.goBack()} />
             <View style={styles.content}>
                 <View style={styles.profile}>
-                    <View style={styles.avatarWrapper}>
-                        <Image source={UserPhotoNull} style={styles.avatar} />
-                        <IconAddPhoto style={styles.addPhoto} />
-                    </View>
+                    <TouchableOpacity style={styles.avatarWrapper} onPress={getImage}>
+                        <Image source={photo} style={styles.avatar} />
+                        {hasPhoto && <IconRemovePhoto style={styles.addPhoto }/>}
+                        {!hasPhoto && <IconAddPhoto style={styles.addPhoto} />}
+                    </TouchableOpacity>
                     <Gap height={30}/>
-                    <Text style={styles.name}>wowoowowo</Text>
-                    <Text style={styles.profession}>Project Team</Text>
+                    <Text style={styles.name}>{fullname}</Text>
+                    <Text style={styles.profession}>{profession}</Text>
                 </View>
                 <View>
-                    <Button title='upload and contiunue' />
+                    <Button title='upload and contiunue' onPress={uploadAndContinue} />
                     <Gap height={30} />
                     <Link title='Skip for this' align='center' size={18}/>
                 </View>
@@ -41,6 +95,7 @@ const styles = StyleSheet.create({
     avatar: {
         width: 110,
         height: 110,
+        borderRadius: 110 / 2
     },
     content: {
         paddingHorizontal: 40,

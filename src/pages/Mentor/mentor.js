@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { Gap, HomeProfile, MentorCategory, NewsItem, RatedMentor } from '../../components/index-components';
 import { colors } from '../../utils/color';
 import { fonts } from '../../utils/font';
-import {DummyTopRated1, JSONMentorCategory} from '../../assets/index-assets';
+import {DummyTopRated1, DummyTopRated2, DummyTopRated3, JSONMentorCategory} from '../../assets/index-assets';
 
 const Mentor = ({navigation}) => {
     return (
@@ -33,9 +33,14 @@ const Mentor = ({navigation}) => {
                         desc='Mentor Petani Ladang'
                         onPress={() => navigation.navigate('MentorProfile')}/>
                     <RatedMentor 
-                        name='Alex Nurdiansyah' 
-                        avatar={DummyTopRated1}
-                        desc='Mentor Petani Ladang'
+                        name='Ardi Nurdiansyah' 
+                        avatar={DummyTopRated2}
+                        desc='Mentor Petani Buah'
+                        onPress={() => navigation.navigate('MentorProfile')}/>
+                    <RatedMentor 
+                        name='Asti Nurmansyah' 
+                        avatar={DummyTopRated3}
+                        desc='Mentor Petani Buah'
                         onPress={() => navigation.navigate('MentorProfile')}/>
 
                     <Text style={styles.sectionLabel}> News</Text>

@@ -11,6 +11,7 @@ import {
     RegisterScreen, 
     SplashScreen, 
     TaniCenter, 
+    TestPage, 
     UpdateProfile, 
     UploadPhoto,
     UserProfile, 
@@ -102,6 +103,11 @@ const Router = () => {
             <Stack.Screen 
                 name='UpdateProfile'
                 component={UpdateProfile}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen 
+                name='TestPage'
+                component={TestPage}
                 options={{headerShown: false}}
             />
 

@@ -1,22 +1,62 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { Button, Gap, Header, HeaderLogin, Input } from '../../components/index-components'
+import { Button, Gap, Header, HeaderLogin, Input, Loading } from '../../components/index-components'
+import Fire from '../../config/firebase'
+import { colors } from '../../utils/color'
 import { useForm } from '../../utils/useForm'
+import { showMessage, hideMessage } from "react-native-flash-message";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { storeData } from '../../utils/index-utils'
 
 const RegisterScreen = ({ navigation }) => {
     const [form, setForm] = useForm({
-        fullname: ' ',
-        profession: ' ',
-        email: ' ',
-        password: ' ',
-    })
+        fullname: '',
+        profession: '',
+        email: '',
+        password: '',
+    });
 
-
+    const [loading, setLoading] = useState(false)
     const onContinue = () => {
         console.log(form)
+        //navigation.navigate('UploadPhoto', data)
+        setLoading(true)
+        Fire.auth()
+            .createUserWithEmailAndPassword(form.email, form.password)
+            .then((success) => {
+                setLoading(false)
+                setForm('reset')
+                
+                const data ={
+                    fullname: form.fullname,
+                    profession: form.profession,
+                    email: form.email,
+                    uid: success.user.uid,
+                }
+                //https: // firebase.com/users
+                Fire.database()
+                    .ref('users/' +success.user.uid+ '/')
+                    .set(data);
+
+                storeData('user', data);
+                navigation.navigate('UploadPhoto', data)
+                console.log('register success' ,success); 
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setLoading(false);
+                showMessage({
+                    message: errorMessage,
+                    type: 'default',
+                    backgroundColor: colors.error,
+                    color: colors.white,
+                })
+                console.log('error:',  error);
+            });
     }
     return (
+        <>
         <View style={styles.screen}>
             <Header onPress={() => navigation.goBack()} title='Daftar akun' />
             <Gap height={40} />
@@ -50,6 +90,8 @@ const RegisterScreen = ({ navigation }) => {
                 </ScrollView>
             </View>
         </View>
+        { loading && <Loading/>}
+        </>
     )
 }
 
