@@ -27,9 +27,10 @@ const UploadPhoto = ({ navigation, route }) => {
             maxWidth: 200,
             maxHeight: 200,
             quality: 1,
+            includeBase64: true,
           };
-        launchImageLibrary(options, (response) => {
-                //console.log('response :', response);
+        launchImageLibrary(options, response => {
+                console.log('response :', response);
                 if(response.didCancel || response.error){
                     showMessage({
                         message: 'pilih foto dulu',
@@ -41,11 +42,10 @@ const UploadPhoto = ({ navigation, route }) => {
                     console.log('response getImage: ', response);
                     const source = {uri: response.uri};
 
-                    setPhotoForDB(`data:${response.type};base64, ${response.data}`);
+                    setPhotoForDB(`data:${response.type};base64, ${response.base64}`);
                     setPhoto(source);
                     setHasPhoto(true);
                 }
-                //console.log('base64 -> ', response.base64);
             });
     };
     

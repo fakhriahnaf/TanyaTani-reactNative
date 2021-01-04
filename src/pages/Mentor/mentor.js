@@ -1,4 +1,4 @@
-import React from 'react'
+import React,  {useEffect, useState} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler';
 import { Gap, HomeProfile, MentorCategory, NewsItem, RatedMentor } from '../../components/index-components';
@@ -7,6 +7,7 @@ import { fonts } from '../../utils/font';
 import {DummyTopRated1, DummyTopRated2, DummyTopRated3, JSONMentorCategory} from '../../assets/index-assets';
 
 const Mentor = ({navigation}) => {
+    
     return (
         <View style={styles.page}>
             <View style={styles.content}>
