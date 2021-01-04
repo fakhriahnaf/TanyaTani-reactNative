@@ -1,18 +1,30 @@
 import React from 'react'
-import { StyleSheet, Text, View,Image } from 'react-native'
-import {colors, fonts} from '../../../utils/index-utils';
-import {IconRemovePhoto, UserDummy} from '../../../assets/index-assets'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { colors, fonts } from '../../../utils/index-utils';
+import { IconRemovePhoto, UserDummy } from '../../../assets/index-assets'
 
 
-const Profile = ({name, profession, isRemove}) => {
+const Profile = ({ name, profession, isRemove, photo , onPress}) => {
     return (
         <View style={styles.container}>
-            <View style={styles.borderPicture}>
-                <Image source={UserDummy} style={styles.avatar}/>
-                {isRemove && <IconRemovePhoto style={styles.removePhoto}/>}
+            {!isRemove && (
+                <View style={styles.borderPicture}>
+                    <Image source={photo} style={styles.avatar} />
             </View>
-            <Text style={styles.name}>{name}</Text>
-            <Text style={styles.profession}>{profession}</Text>
+            )}
+            {isRemove && (
+                <TouchableOpacity style={styles.borderPicture} onPress={onPress}>
+                    <Image source={photo} style={styles.avatar} />
+                    {isRemove && <IconRemovePhoto style={styles.removePhoto} />}
+                </TouchableOpacity>
+            )}
+            {name && (
+                <View style={{alignItems: 'center'}}>
+                    <Text style={styles.name}>{name}</Text>
+                    <Text style={styles.profession}>{profession}</Text>
+                </View>
+            )}
+
         </View>
     )
 }
@@ -20,31 +32,32 @@ const Profile = ({name, profession, isRemove}) => {
 export default Profile
 
 const styles = StyleSheet.create({
-    container : {
+    container: {
         justifyContent: 'center',
         alignItems: 'center',
 
     },
-    avatar :{
+    avatar: {
         width: 110,
         height: 110,
-        borderRadius: 110/2,
-        
+        borderRadius: 110 / 2,
+
     },
-    borderPicture:{
+    borderPicture: {
         width: 130,
         height: 130,
-        borderRadius: 130/2,
+        borderRadius: 130 / 2,
         borderWidth: 1,
         borderColor: colors.border,
         justifyContent: 'center',
         alignItems: 'center'
     },
-    name : {
+    name: {
         fontSize: 20,
         fontFamily: fonts.primary[600],
         color: colors.text.primary,
         marginTop: 16,
+        textTransform: 'capitalize'
     },
     profession: {
         fontSize: 16,
@@ -52,7 +65,7 @@ const styles = StyleSheet.create({
         color: colors.text.secondary,
         marginTop: 2,
     },
-    removePhoto :{
+    removePhoto: {
         position: 'absolute',
         right: 8,
         bottom: 8,

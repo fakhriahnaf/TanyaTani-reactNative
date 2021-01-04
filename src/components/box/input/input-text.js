@@ -4,7 +4,7 @@ import { TextInput } from 'react-native-gesture-handler'
 import { colors } from '../../../utils/color'
 import { fonts } from '../../../utils/font'
 
-const Input = ({label, value, onChangeText, secureTextEntry}) => {
+const Input = ({label, value, onChangeText, secureTextEntry, disable}) => {
     //efek glow and blur
     const [border, setBorder] = useState(colors.border);
     const onFocusForm = () => {
@@ -23,7 +23,9 @@ const Input = ({label, value, onChangeText, secureTextEntry}) => {
                 style={styles.input(border)} 
                 value={value} 
                 onChangeText={onChangeText}
-                secureTextEntry={secureTextEntry}>
+                secureTextEntry={secureTextEntry}
+                editable={!disable}
+                selectTextOnFocus={!disable }>
                 
             </TextInput>
         </View>
@@ -39,8 +41,9 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         height: 48,
         padding: 13,
-        fontFamily: fonts.primary.normal,
+        //fontFamily: fonts.primary.normal,
         fontSize: 14,
+        //color: colors.text.secondary
     }), 
     textLabel : {
         fontSize: 18,
