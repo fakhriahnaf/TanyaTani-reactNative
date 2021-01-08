@@ -8,23 +8,24 @@ import Fire from '../../config/firebase'
 import { showMessage } from 'react-native-flash-message';
 import { useState } from 'react';
 import {Loading} from '../../components/index-components';
+import { useDispatch, useSelector } from 'react-redux';
 
 const LoginScreen = ({navigation}) => {
     //declare the variable
     const [form, setForm] = useForm({email: '', password: ''});
-    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
 
     //login Continue
     const loginContinue = () =>{
         console.log('form :' , form);
-        setLoading(true)
+        dispatch({type: 'SET_LOADING', value: true});
         
         //firebase database
         Fire.auth()
             .signInWithEmailAndPassword(form.email, form.password)
             .then(res => { 
                 console.log('success: ' , res);
-                setLoading(false);
+                dispatch({type: 'SET_LOADING', value: false})
                 Fire.database()
                     .ref(`users/${res.user.uid}/`)
                     .once('value')
@@ -38,7 +39,7 @@ const LoginScreen = ({navigation}) => {
         })
         .catch(err => {
             console.log('error: ', err);
-            setLoading(false);
+            dispatch({type: 'SET_LOADING', value: false})
             showMessage({
                 message: err.message,
                 type:'default',
@@ -48,8 +49,11 @@ const LoginScreen = ({navigation}) => {
         })
         
     }
+
+    // const showLoadingTemp = () => {
+    //     dispatch({type: 'SET_LOADING', value : true});
+    // }
     return (
-        <>
         <View style={styles.scren}>
             <View>
                 <SignInBorder/>
@@ -77,8 +81,6 @@ const LoginScreen = ({navigation}) => {
                 <Gap height={170}/>
             </View>
         </View>
-        {loading && <Loading/>}
-        </>
     )
 }
 

@@ -8,7 +8,7 @@ import IconOnly from './icon-only'
 
 const Button = ({type, title, onPress,icon, disable}) => {
     if (type === 'button-icon-send') {
-        return <ButtonIconSend disable={disable}/>
+        return <ButtonIconSend disable={disable} onPress={onPress}/>
     }
     if (type === 'icon-only') {
         return <IconOnly icon={icon} onPress={onPress}/>

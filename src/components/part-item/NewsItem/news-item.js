@@ -4,14 +4,14 @@ import { DummyNews1 } from '../../../assets/index-assets'
 import { colors } from '../../../utils/color'
 import { fonts } from '../../../utils/font'
 
-const NewsItem = () => {
+const NewsItem = ({title, date, image}) => {
     return (
         <View style={styles.container}>
             <View style={styles.wrapTitle}>
-                <Text style={styles.title}>Musim pancaroba, para petani beralih profesi dan menjadi programmer</Text>
-                <Text style={styles.date}>Today</Text>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.date}>{date}</Text>
             </View>
-            <Image source ={DummyNews1} style={styles.imageNews}/>
+            <Image source ={{uri : image}} style={styles.imageNews}/>
         </View>
     )
 }

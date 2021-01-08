@@ -6,15 +6,15 @@ import { colors } from '../../../utils/color'
 import { fonts } from '../../../utils/font'
 import { Button } from '../../box'
 
-const DarkProfile = ({onPress}) => {
+const DarkProfile = ({onPress, title, desc, photo}) => {
     return (
         <View style={styles.container}>
             <Button type='icon-only' icon='back-light' onPress={onPress}/>
             <View style={styles.content}>
-                <Text style={styles.name}>Alex Nurdiansyah</Text>
-                <Text style={styles.desc}>Petani Ladang</Text>
+                <Text style={styles.name}>{title}</Text>
+                <Text style={styles.desc}>{desc}</Text>
             </View>
-            <Image source={DummyTopRated1} style={styles.avatar}/> 
+            <Image source={photo} style={styles.avatar}/> 
         </View>
     )
 }

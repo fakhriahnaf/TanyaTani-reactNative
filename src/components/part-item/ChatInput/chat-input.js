@@ -5,11 +5,21 @@ import { colors } from '../../../utils/color'
 import { fonts } from '../../../utils/font'
 import { Button } from '../../box'
 
-const ChatInput = () => {
+const ChatInput = ({value, onChangeText, onButtonPress}) => {
     return (
         <View style={styles.container}>
-            <TextInput style={styles.input} placeholder='tulis pesan untuk alex'/>
-            <Button title='send' type='button-icon-send'/>
+            <TextInput 
+                style={styles.input} 
+                placeholder='tulis pesan untuk alex'
+                value={value}
+                onChangeText={onChangeText}
+            />
+                
+            <Button 
+                disable= {value.length < 1}
+                title='send' 
+                type='button-icon-send' 
+                onPress={onButtonPress}/>
         </View>
     )
 }
@@ -20,6 +30,7 @@ const styles = StyleSheet.create({
     container : {
         padding: 16,
         flexDirection: 'row',
+        backgroundColor: 'yellow'
     },
     input : {
         backgroundColor: colors.disable,

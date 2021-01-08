@@ -5,9 +5,9 @@ import { colors } from '../../../utils/color'
 import { Button, Gap } from '../../box'
 import { DarkProfile } from '../index-partItem'
 
-const Header = ({onPress, title, type}) => {
+const Header = ({onPress, title, desc, photo, type}) => {
     if (type === 'dark-profile') {
-        return <DarkProfile onPress={onPress}/>
+        return <DarkProfile onPress={onPress} onPress={onPress} title={title} desc={desc} photo={photo}/>
     }
     return (
         <View style={styles.container(type)}>

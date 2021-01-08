@@ -6,7 +6,7 @@ import Fire from '../../config/firebase'
 import { colors } from '../../utils/color'
 import { useForm } from '../../utils/useForm'
 import { showMessage, hideMessage } from "react-native-flash-message";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+//import AsyncStorage from '@react-native-async-storage/async-storage';
 import { storeData } from '../../utils/index-utils'
 
 const RegisterScreen = ({ navigation }) => {
